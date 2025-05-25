@@ -1,13 +1,9 @@
-console.log("Script loaded");
-
 // Theme and Language Management
 let currentTheme = localStorage.getItem('theme') || 'dark';
 let currentLanguage = localStorage.getItem('language') || 'en';
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded, initializing...");
-    
     // Load saved theme and language
     document.documentElement.setAttribute('data-theme', currentTheme);
     document.documentElement.setAttribute('lang', currentLanguage);
@@ -62,18 +58,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile Navigation
     const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-    const nav = document.querySelector('nav');
+    const navLinks = document.querySelector('.nav-links');
 
-    if (mobileNavToggle && nav) {
+    if (mobileNavToggle && navLinks) {
         mobileNavToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            // Toggle icon between bars and times
+            const icon = mobileNavToggle.querySelector('i');
+            if (icon) {
+                icon.className = navLinks.classList.contains('active') ? 
+                    'fas fa-times' : 'fas fa-bars';
+            }
         });
 
         // Close mobile nav when clicking outside
         document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
-                nav.classList.remove('active');
+            if (!navLinks.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+                navLinks.classList.remove('active');
+                const icon = mobileNavToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
             }
+        });
+
+        // Close mobile nav when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileNavToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
+            });
         });
     }
 
@@ -87,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth',
                     block: 'start'
                 });
-                if (nav) nav.classList.remove('active');
+                if (navLinks) navLinks.classList.remove('active');
             }
         });
     });
@@ -108,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Show More/Less functionality using event delegation
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('show-more-btn')) {
-            console.log('Show more button clicked');
             const card = e.target.closest('.project-card');
             const content = card.querySelector('.project-content');
             const shortTags = card.querySelector('.project-tags:not(.full-tags)');
@@ -129,11 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize snow effect
-    console.log('Initializing snow effect');
     initSnowEffect();
-
-    // Check for truncated content
-    checkTruncation();
 });
 
 // Snow Effect

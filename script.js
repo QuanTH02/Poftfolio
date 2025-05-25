@@ -109,19 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form submission
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const message = currentLanguage === 'en' ? 
-                'Thank you for your message! I will get back to you soon.' : 
-                'Cảm ơn tin nhắn của bạn! Tôi sẽ liên hệ lại sớm.';
-            alert(message);
-            contactForm.reset();
-        });
-    }
-
     // Show More/Less functionality using event delegation
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('show-more-btn')) {
@@ -241,4 +228,145 @@ document.addEventListener('click', (e) => {
     if (e.target.classList.contains('show-more-btn')) {
         setTimeout(checkTruncation, 100); // Check after animation
     }
-}); 
+});
+
+// Load messages from localStorage
+function loadMessages() {
+    try {
+        const messages = localStorage.getItem('contactMessages');
+        return messages ? JSON.parse(messages) : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+// Save messages to localStorage
+function saveMessages(messages) {
+    try {
+        localStorage.setItem('contactMessages', JSON.stringify(messages));
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+// Display messages in the message list
+function displayMessages(messages) {
+    const messageList = document.getElementById('message-list');
+    if (!messageList) return;
+    
+    messageList.innerHTML = '';
+
+    if (!messages || messages.length === 0) {
+        const noMessages = document.createElement('div');
+        noMessages.className = 'message-item';
+        noMessages.innerHTML = `
+            <div class="message-content">
+                ${currentLanguage === 'en' ? 'No messages yet.' : 'Chưa có tin nhắn nào.'}
+            </div>
+        `;
+        messageList.appendChild(noMessages);
+        return;
+    }
+
+    messages.forEach((message, index) => {
+        if (!message || typeof message !== 'object') return;
+
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message-item';
+        
+        // Escape HTML to prevent XSS
+        const escapeHtml = (text) => {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        };
+
+        const formattedDate = message.date ? new Date(message.date).toLocaleString() : '';
+        
+        messageElement.innerHTML = `
+            <div class="message-header">
+                <span class="message-date">${formattedDate}</span>
+            </div>
+            <div class="message-info">
+                <div class="message-field">
+                    <span class="message-label">${currentLanguage === 'en' ? 'Name:' : 'Tên:'}</span>
+                    <span class="message-value">${escapeHtml(message.name)}</span>
+                </div>
+                <div class="message-field">
+                    <span class="message-label">${currentLanguage === 'en' ? 'Subject:' : 'Tiêu đề:'}</span>
+                    <span class="message-value">${escapeHtml(message.subject)}</span>
+                </div>
+                <div class="message-field">
+                    <span class="message-label">${currentLanguage === 'en' ? 'Message:' : 'Tin nhắn:'}</span>
+                    <span class="message-value">${escapeHtml(message.message)}</span>
+                </div>
+            </div>
+        `;
+        messageList.appendChild(messageElement);
+    });
+}
+
+// Handle form submission
+document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const name = formData.get('name')?.trim();
+    const email = formData.get('email')?.trim();
+    const subject = formData.get('subject')?.trim();
+    const message = formData.get('message')?.trim();
+
+    // Validate message
+    if (!name || !email || !subject || !message) {
+        const errorMessage = currentLanguage === 'en' ? 
+            'Please fill in all fields.' : 
+            'Vui lòng điền đầy đủ thông tin.';
+        alert(errorMessage);
+        return;
+    }
+
+    const newMessage = {
+        name,
+        email,
+        subject,
+        message,
+        date: new Date().toISOString()
+    };
+
+    // Load existing messages
+    const messages = loadMessages();
+    
+    // Add new message
+    messages.unshift(newMessage);
+    
+    // Save updated messages
+    const success = saveMessages(messages);
+    
+    if (success) {
+        // Display updated messages
+        displayMessages(messages);
+        
+        // Reset form
+        e.target.reset();
+        
+        // Show success message in current language
+        const successMessage = currentLanguage === 'en' ? 
+            'Thank you for your message! I will get back to you soon.' : 
+            'Cảm ơn tin nhắn của bạn! Tôi sẽ liên hệ lại sớm.';
+        alert(successMessage);
+    } else {
+        // Show error message in current language
+        const errorMessage = currentLanguage === 'en' ? 
+            'Error sending message. Please try again.' : 
+            'Lỗi khi gửi tin nhắn. Vui lòng thử lại.';
+        alert(errorMessage);
+    }
+});
+
+// Load and display messages when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    const messages = loadMessages();
+    displayMessages(messages);
+});

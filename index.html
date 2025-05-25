@@ -403,21 +403,30 @@
                         </div>
                     </div>
                 </div>
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" data-en="Your Name" data-vi="Tên của bạn" required>
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" data-en="Your Name" data-vi="Tên của bạn" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" data-en="Your Email" data-vi="Email của bạn" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" data-en="Subject" data-vi="Tiêu đề" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" data-en="Your Message" data-vi="Tin nhắn của bạn" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary-btn" data-en="Send Message" data-vi="Gửi Tin Nhắn">Send Message</button>
+                    </form>
+
+                    <div class="message-history">
+                        <h3 data-en="Message History" data-vi="Lịch sử tin nhắn">Message History</h3>
+                        <div id="message-list" class="message-list">
+                            <!-- Messages will be displayed here -->
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" data-en="Your Email" data-vi="Email của bạn" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" data-en="Subject" data-vi="Tiêu đề" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" data-en="Your Message" data-vi="Tin nhắn của bạn" required></textarea>
-                    </div>
-                    <button type="submit" class="btn primary-btn" data-en="Send Message" data-vi="Gửi Tin Nhắn">Send Message</button>
-                </form>
+                </div>
             </div>
         </div>
     </section>

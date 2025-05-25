@@ -949,10 +949,11 @@ section {
         height: 100vh;
         background: var(--card-bg);
         flex-direction: column;
-        padding: 5rem 2rem;
+        padding: 5rem 1rem;
         transition: var(--transition);
         box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
         margin-right: 0;
+        gap: 0.5rem;
     }
 
     .nav-links.active {
@@ -960,17 +961,35 @@ section {
     }
 
     .nav-links a {
-        padding: 1rem 0;
+        padding: 0.75rem 1rem;
         width: 100%;
         text-align: left;
+        display: block;
+        border-radius: 8px;
+        border: 1px solid rgba(124, 58, 237, 0.1);
+        transition: var(--transition);
+    }
+
+    .nav-links li {
+        width: 100%;
     }
 
     .nav-links a:hover {
         color: var(--primary-color);
+        background: var(--gradient-2);
+        border-color: var(--primary-color);
+        transform: translateX(5px);
     }
 
     .theme-toggle {
         right: 4rem;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.active ~ .theme-toggle {
+        right: -100px;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .hero-header {
@@ -1055,7 +1074,7 @@ section {
 
 @media (max-width: 480px) {
     .hero {
-        padding: 4rem 1rem;
+        padding: 6rem 1rem 4rem 1rem;
     }
 
     .hero h1 {

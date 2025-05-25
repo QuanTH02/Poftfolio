@@ -341,6 +341,8 @@ body {
     display: flex;
     gap: 3rem;
     margin: 1rem 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .stat-item {
@@ -349,6 +351,7 @@ body {
     align-items: center;
     gap: 0.5rem;
     text-align: center;
+    min-width: 120px;
 }
 
 .stat-number {
@@ -438,13 +441,13 @@ body {
 
 /* Section Styles */
 section {
-    padding: 6rem 0;
+    padding: 4rem 0;
 }
 
 .section-title {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     color: var(--text-color);
 }
 
@@ -838,17 +841,36 @@ section {
     background: var(--card-bg);
     border-radius: 12px;
     border: 1px solid rgba(124, 58, 237, 0.1);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+    border-color: var(--primary-color);
 }
 
 .contact-item i {
     font-size: 1.5rem;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.contact-item:hover i {
+    transform: scale(1.1);
 }
 
 .contact-item h3 {
     margin-bottom: 0.25rem;
     font-size: 1.1rem;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.contact-item:hover h3 {
+    color: var(--primary-color);
 }
 
 .contact-link {
@@ -856,10 +878,14 @@ section {
     text-decoration: none;
     transition: var(--transition);
     display: inline-block;
-    /* margin-top: 0.25rem; */
     position: relative;
     z-index: 2;
     font-size: 0.95rem;
+}
+
+.contact-item:hover .contact-link {
+    color: var(--primary-color);
+    transform: translateX(5px);
 }
 
 .education-info {
@@ -938,11 +964,12 @@ section {
 
 /* Footer */
 .footer {
-    background: var(--gradient-1);
-    color: white;
+    background: var(--section-bg);
+    color: var(--text-color);
     padding: 2rem 0;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid rgba(124, 58, 237, 0.1);
 }
 
 .footer::before {
@@ -952,7 +979,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: var(--gradient-2);
+    opacity: 0.05;
     z-index: 0;
 }
 
@@ -972,7 +1000,7 @@ section {
 }
 
 .footer .social-links a {
-    color: white;
+    color: var(--text-color);
     font-size: 1.2rem;
     width: 35px;
     height: 35px;
@@ -980,14 +1008,17 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
     transition: var(--transition);
     text-decoration: none;
+    border: 1px solid rgba(124, 58, 237, 0.1);
 }
 
 .footer .social-links a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary-color);
+    color: white;
     transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -1104,10 +1135,11 @@ section {
 
     .hero-stats {
         justify-content: center;
+        gap: 2rem;
     }
 
     .stat-item {
-        align-items: center;
+        min-width: 100px;
     }
 
     .social-links {
@@ -1201,8 +1233,19 @@ section {
     }
 
     .hero-stats {
-        flex-direction: column;
         gap: 1.5rem;
+    }
+
+    .stat-item {
+        min-width: 80px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
     }
 
     .hero-buttons {
@@ -1238,6 +1281,7 @@ section {
 
     .section-title {
         font-size: 2rem;
+        margin-bottom: 2rem;
     }
 
     .project-tasks li {
@@ -1517,5 +1561,16 @@ section {
 
     .message-value {
         font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 2.5rem 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
     }
 } 

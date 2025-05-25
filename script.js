@@ -8,6 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', currentTheme);
     document.documentElement.setAttribute('lang', currentLanguage);
 
+    // Add click handlers for contact items
+    const contactItems = document.querySelectorAll('.contact-item');
+    contactItems.forEach(item => {
+        const link = item.querySelector('.contact-link');
+        if (link) {
+            item.addEventListener('click', () => {
+                window.open(link.href, '_blank');
+            });
+        }
+    });
+
     // Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {

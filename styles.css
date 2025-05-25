@@ -18,6 +18,8 @@
     --gradient-2: linear-gradient(135deg, #1f2937 0%, #111827 100%);
     --gradient-3: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
     --transition: all 0.3s ease;
+    --tooltip-bg: #333;
+    --tooltip-text: #fff;
 }
 
 [data-theme="light"] {
@@ -31,6 +33,8 @@
     --gradient-1: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
     --gradient-2: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
     --gradient-3: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    --tooltip-bg: #666;
+    --tooltip-text: #fff;
 }
 
 html {
@@ -567,13 +571,57 @@ section {
     margin-bottom: 1rem;
 }
 
-.project-header h3 {
-    font-size: 1.2rem;
-    margin: 0;
+.project-header h3,
+.project-description {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    cursor: help;
+}
+
+.project-header h3:hover::after,
+.project-description:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 12px;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.project-header h3:hover::before,
+.project-description:hover::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% - 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--tooltip-bg) transparent transparent transparent;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.project-header h3:hover::after,
+.project-header h3:hover::before,
+.project-description:hover::after,
+.project-description:hover::before {
+    opacity: 1;
 }
 
 .project-logo {

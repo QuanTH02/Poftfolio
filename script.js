@@ -1,157 +1,137 @@
+console.log("Script loaded");
+
 // Theme and Language Management
 let currentTheme = localStorage.getItem('theme') || 'dark';
 let currentLanguage = localStorage.getItem('language') || 'en';
 
-// Load saved theme and language
-document.documentElement.setAttribute('data-theme', currentTheme);
-document.documentElement.setAttribute('lang', currentLanguage);
-
-// Theme Toggle
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.addEventListener('click', () => {
-    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded, initializing...");
+    
+    // Load saved theme and language
     document.documentElement.setAttribute('data-theme', currentTheme);
-    localStorage.setItem('theme', currentTheme);
-    updateThemeIcon();
-});
-
-// Language Toggle
-const languageToggle = document.getElementById('language-toggle');
-languageToggle.addEventListener('click', () => {
-    currentLanguage = currentLanguage === 'en' ? 'vi' : 'en';
     document.documentElement.setAttribute('lang', currentLanguage);
-    localStorage.setItem('language', currentLanguage);
-    updateLanguage();
-});
 
-// Update theme icon
-function updateThemeIcon() {
-    const icon = themeToggle.querySelector('i');
-    icon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
-}
-
-// Update language text
-function updateLanguage() {
-    const elements = document.querySelectorAll('[data-en], [data-vi]');
-    elements.forEach(element => {
-        const text = currentLanguage === 'en' ? 
-            element.getAttribute('data-en') : 
-            element.getAttribute('data-vi');
-        if (text) {
-            // Preserve the name in the highlight span
-            if (element.classList.contains('highlight')) {
-                element.textContent = 'Trần Hồng Quân';
-            } else {
-                element.textContent = text;
-            }
-        }
-    });
-}
-
-// Mobile Navigation
-const mobileNavToggle = document.getElementById('mobile-nav-toggle');
-const nav = document.querySelector('nav');
-
-mobileNavToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-});
-
-// Close mobile nav when clicking outside
-document.addEventListener('click', (e) => {
-    if (!nav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
-        nav.classList.remove('active');
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('theme', currentTheme);
+            updateThemeIcon();
+        });
     }
-});
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            nav.classList.remove('active');
+    // Language Toggle
+    const languageToggle = document.getElementById('language-toggle');
+    if (languageToggle) {
+        languageToggle.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'en' ? 'vi' : 'en';
+            document.documentElement.setAttribute('lang', currentLanguage);
+            localStorage.setItem('language', currentLanguage);
+            updateLanguage();
+        });
+    }
+
+    // Update theme icon
+    function updateThemeIcon() {
+        const icon = themeToggle?.querySelector('i');
+        if (icon) {
+            icon.className = currentTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
         }
-    });
-});
+    }
 
-// Form submission
-const contactForm = document.getElementById('contact-form');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const message = currentLanguage === 'en' ? 
-        'Thank you for your message! I will get back to you soon.' : 
-        'Cảm ơn tin nhắn của bạn! Tôi sẽ liên hệ lại sớm.';
-    alert(message);
-    contactForm.reset();
-});
+    // Update language text
+    function updateLanguage() {
+        const elements = document.querySelectorAll('[data-en], [data-vi]');
+        elements.forEach(element => {
+            const text = currentLanguage === 'en' ? 
+                element.getAttribute('data-en') : 
+                element.getAttribute('data-vi');
+            if (text) {
+                // Preserve the name in the highlight span
+                if (element.classList.contains('highlight')) {
+                    element.textContent = 'Trần Hồng Quân';
+                } else {
+                    element.textContent = text;
+                }
+            }
+        });
+    }
 
-// Scroll reveal animation
-const revealElements = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
-    });
-}, { threshold: 0.1 });
+    // Mobile Navigation
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const nav = document.querySelector('nav');
 
-revealElements.forEach(element => observer.observe(element));
+    if (mobileNavToggle && nav) {
+        mobileNavToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
 
-// Active navigation link
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a');
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+                nav.classList.remove('active');
+            }
+        });
+    }
 
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Show More functionality for project cards
-function initializeShowMoreButtons() {
-    const buttons = document.querySelectorAll('.show-more-btn');
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            e.stopPropagation();
-            
-            const card = this.closest('.project-card');
-            const content = card.querySelector('.project-content');
-            const isExpanded = content.classList.toggle('expanded');
-            
-            // Update button text based on language
-            this.textContent = currentLanguage === 'en' ? 
-                (isExpanded ? 'Show Less' : 'Show More') : 
-                (isExpanded ? 'Thu gọn' : 'Xem thêm');
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                if (nav) nav.classList.remove('active');
+            }
         });
     });
-}
 
-// Initialize show more buttons when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializeShowMoreButtons);
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const message = currentLanguage === 'en' ? 
+                'Thank you for your message! I will get back to you soon.' : 
+                'Cảm ơn tin nhắn của bạn! Tôi sẽ liên hệ lại sớm.';
+            alert(message);
+            contactForm.reset();
+        });
+    }
 
-// Re-initialize show more buttons when language changes
-const originalUpdateLanguage = updateLanguage;
-updateLanguage = function() {
-    originalUpdateLanguage();
-    initializeShowMoreButtons();
-};
+    // Show More/Less functionality using event delegation
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('show-more-btn')) {
+            console.log('Show more button clicked');
+            const card = e.target.closest('.project-card');
+            const content = card.querySelector('.project-content');
+            const shortTags = card.querySelector('.project-tags:not(.full-tags)');
+            const fullTags = card.querySelector('.project-tags.full-tags');
+            const isExpanded = content.classList.toggle('expanded');
+            
+            // Toggle visibility of tags
+            if (shortTags && fullTags) {
+                shortTags.style.display = isExpanded ? 'none' : 'flex';
+                fullTags.style.display = isExpanded ? 'flex' : 'none';
+            }
+            
+            // Update button text based on language
+            e.target.textContent = currentLanguage === 'en' ? 
+                (isExpanded ? 'Show Less' : 'Show More') : 
+                (isExpanded ? 'Thu gọn' : 'Xem thêm');
+        }
+    });
+
+    // Initialize snow effect
+    console.log('Initializing snow effect');
+    initSnowEffect();
+});
 
 // Snow Effect
 function createSnowflake() {
@@ -179,6 +159,8 @@ function createSnowflake() {
 
 function initSnowEffect() {
     const snowContainer = document.querySelector('.snow-container');
+    if (!snowContainer) return;
+    
     const snowflakeCount = 15; // Reduced number for subtle effect
     
     // Create initial snowflakes
@@ -201,7 +183,24 @@ function initSnowEffect() {
     }, 1000); // Check every second
 }
 
-// Initialize snow effect when page loads
-document.addEventListener('DOMContentLoaded', () => {
-    initSnowEffect();
+// Active navigation link
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').slice(1) === current) {
+            link.classList.add('active');
+        }
+    });
 }); 

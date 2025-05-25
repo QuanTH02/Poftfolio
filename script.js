@@ -1,5 +1,5 @@
 // Theme and Language Management
-let currentTheme = localStorage.getItem('theme') || 'light';
+let currentTheme = localStorage.getItem('theme') || 'dark';
 let currentLanguage = localStorage.getItem('language') || 'en';
 
 // Load saved theme and language
@@ -9,7 +9,7 @@ document.documentElement.setAttribute('lang', currentLanguage);
 // Theme Toggle
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.addEventListener('click', () => {
-    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
     localStorage.setItem('theme', currentTheme);
     updateThemeIcon();

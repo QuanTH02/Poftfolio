@@ -6,21 +6,7 @@
 }
 
 :root {
-    /* Light Theme */
-    --primary-color: #7c3aed;
-    --secondary-color: #5b21b6;
-    --text-color: #1f2937;
-    --light-text: #6b7280;
-    --background: #ffffff;
-    --section-bg: #f3f4f6;
-    --card-bg: #ffffff;
-    --gradient-1: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
-    --gradient-2: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
-    --gradient-3: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-    --transition: all 0.3s ease;
-}
-
-[data-theme="dark"] {
+    /* Dark Theme (Default) */
     --primary-color: #a78bfa;
     --secondary-color: #7c3aed;
     --text-color: #f3f4f6;
@@ -30,6 +16,20 @@
     --card-bg: #1f2937;
     --gradient-1: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
     --gradient-2: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    --gradient-3: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="light"] {
+    --primary-color: #7c3aed;
+    --secondary-color: #5b21b6;
+    --text-color: #1f2937;
+    --light-text: #6b7280;
+    --background: #ffffff;
+    --section-bg: #f3f4f6;
+    --card-bg: #ffffff;
+    --gradient-1: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+    --gradient-2: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
     --gradient-3: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
 }
 

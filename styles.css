@@ -368,6 +368,8 @@ body {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .social-link {
@@ -382,6 +384,7 @@ body {
     transition: var(--transition);
     border: 1px solid rgba(124, 58, 237, 0.1);
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .social-link:hover {
@@ -983,13 +986,6 @@ section {
 
     .theme-toggle {
         right: 4rem;
-        transition: all 0.3s ease;
-    }
-
-    .nav-links.active ~ .theme-toggle {
-        right: -100px;
-        opacity: 0;
-        pointer-events: none;
     }
 
     .hero-header {
@@ -1105,13 +1101,15 @@ section {
     }
 
     .social-links {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
     }
 
     .social-link {
-        width: 100%;
-        justify-content: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 
     .avatar {

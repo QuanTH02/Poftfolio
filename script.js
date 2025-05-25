@@ -118,20 +118,15 @@ window.addEventListener('scroll', () => {
 
 // Show More functionality for project cards
 function initializeShowMoreButtons() {
-    console.log('Initializing show more buttons...');
     const buttons = document.querySelectorAll('.show-more-btn');
-    console.log('Found buttons:', buttons.length);
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
-            console.log('Button clicked!');
             e.preventDefault();
             e.stopPropagation();
             
             const card = this.closest('.project-card');
             const content = card.querySelector('.project-content');
-            console.log('Content element:', content);
             const isExpanded = content.classList.toggle('expanded');
-            console.log('Is expanded:', isExpanded);
             
             // Update button text based on language
             this.textContent = currentLanguage === 'en' ? 
@@ -142,15 +137,11 @@ function initializeShowMoreButtons() {
 }
 
 // Initialize show more buttons when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing...');
-    initializeShowMoreButtons();
-});
+document.addEventListener('DOMContentLoaded', initializeShowMoreButtons);
 
 // Re-initialize show more buttons when language changes
 const originalUpdateLanguage = updateLanguage;
 updateLanguage = function() {
-    console.log('Language changed, re-initializing...');
     originalUpdateLanguage();
     initializeShowMoreButtons();
 }; 

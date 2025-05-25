@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Trần Hồng Quân - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -39,17 +39,47 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 data-en="Hi, I'm" data-vi="Xin chào, tôi là">Hi, I'm <span class="highlight">John Doe</span></h1>
-            <h2 data-en="Full Stack Developer" data-vi="Lập Trình Viên Full Stack">Full Stack Developer</h2>
-            <p data-en="I create beautiful and functional websites with modern technologies" data-vi="Tôi tạo ra những website đẹp và chức năng với công nghệ hiện đại">I create beautiful and functional websites with modern technologies</p>
+            <div class="hero-header">
+                <div class="avatar">
+                    <img src="avt.jpg" alt="Trần Hồng Quân">
+                </div>
+                <div class="hero-text">
+                    <h1 data-en="Hi, I'm" data-vi="Xin chào, tôi là">Hi, I'm <span class="highlight" data-en="Trần Hồng Quân" data-vi="Trần Hồng Quân">Trần Hồng Quân</span></h1>
+                    <h2 data-en="Full Stack Developer at THEINFITECH" data-vi="Lập Trình Viên Full Stack tại THEINFITECH">Full Stack Developer at THEINFITECH</h2>
+                    <p data-en="I create efficient and scalable web applications with modern technologies" data-vi="Tôi xây dựng các ứng dụng web hiệu quả và có khả năng mở rộng với công nghệ hiện đại">I create efficient and scalable web applications with modern technologies</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label" data-en="Years Experience" data-vi="Năm Kinh Nghiệm">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label" data-en="Projects" data-vi="Dự Án">Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label" data-en="Technologies" data-vi="Công Nghệ">Technologies</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/QuanTH02" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/quanth02/" target="_blank" class="social-link">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://www.facebook.com/quanth02/" target="_blank" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="hero-buttons">
                 <a href="#contact" class="btn primary-btn" data-en="Contact Me" data-vi="Liên Hệ">Contact Me</a>
                 <a href="#projects" class="btn secondary-btn" data-en="View Projects" data-vi="Xem Dự Án">View Projects</a>
-            </div>
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
             </div>
         </div>
     </section>
@@ -60,21 +90,21 @@
             <h2 class="section-title" data-en="About Me" data-vi="Giới Thiệu">About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p data-en="I am a passionate Full Stack Developer with 3 years of experience in creating web applications. I specialize in JavaScript, React, Node.js, and modern web technologies." data-vi="Tôi là một Lập Trình Viên Full Stack đam mê với 3 năm kinh nghiệm trong việc tạo ra các ứng dụng web. Tôi chuyên về JavaScript, React, Node.js và các công nghệ web hiện đại.">I am a passionate Full Stack Developer with 3 years of experience in creating web applications. I specialize in JavaScript, React, Node.js, and modern web technologies.</p>
-                    <p data-en="My goal is to build efficient, scalable, and user-friendly applications that solve real-world problems." data-vi="Mục tiêu của tôi là xây dựng các ứng dụng hiệu quả, có khả năng mở rộng và thân thiện với người dùng để giải quyết các vấn đề thực tế.">My goal is to build efficient, scalable, and user-friendly applications that solve real-world problems.</p>
+                    <p data-en="I am a Full Stack Developer at THEINFITECH, currently studying at Hanoi University of Science and Technology. I specialize in building web applications using Next.js, FastAPI, and MySQL." data-vi="Tôi là Lập Trình Viên Full Stack tại THEINFITECH, hiện đang học tại Đại học Bách Khoa Hà Nội. Tôi chuyên về xây dựng ứng dụng web sử dụng Next.js, FastAPI và MySQL.">I am a Full Stack Developer at THEINFITECH, currently studying at Hanoi University of Science and Technology. I specialize in building web applications using Next.js, FastAPI, and MySQL.</p>
+                    <p data-en="With experience in both frontend and backend development, I create efficient and scalable solutions that solve real-world problems." data-vi="Với kinh nghiệm trong cả phát triển frontend và backend, tôi tạo ra các giải pháp hiệu quả và có khả năng mở rộng để giải quyết các vấn đề thực tế.">With experience in both frontend and backend development, I create efficient and scalable solutions that solve real-world problems.</p>
                 </div>
                 <div class="about-stats">
                     <div class="stat-item">
-                        <h3>3+</h3>
+                        <h3>1+</h3>
                         <p data-en="Years Experience" data-vi="Năm Kinh Nghiệm">Years Experience</p>
                     </div>
                     <div class="stat-item">
-                        <h3>20+</h3>
+                        <h3>10+</h3>
                         <p data-en="Projects Completed" data-vi="Dự Án Hoàn Thành">Projects Completed</p>
                     </div>
                     <div class="stat-item">
-                        <h3>15+</h3>
-                        <p data-en="Happy Clients" data-vi="Khách Hàng Hài Lòng">Happy Clients</p>
+                        <h3>5+</h3>
+                        <p data-en="Technologies" data-vi="Công Nghệ">Technologies</p>
                     </div>
                 </div>
             </div>
@@ -87,28 +117,28 @@
             <h2 class="section-title" data-en="My Skills" data-vi="Kỹ Năng">My Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5</h3>
+                    <i class="fab fa-react"></i>
+                    <h3>Next.js</h3>
                 </div>
                 <div class="skill-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <h3>CSS3</h3>
+                    <i class="fab fa-python"></i>
+                    <h3>FastAPI</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>MySQL</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-microsoft"></i>
+                    <h3>Azure</h3>
                 </div>
                 <div class="skill-card">
                     <i class="fab fa-js"></i>
                     <h3>JavaScript</h3>
                 </div>
                 <div class="skill-card">
-                    <i class="fab fa-react"></i>
-                    <h3>React</h3>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-node-js"></i>
-                    <h3>Node.js</h3>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>MongoDB</h3>
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5/CSS3</h3>
                 </div>
             </div>
         </div>
@@ -120,16 +150,73 @@
             <h2 class="section-title" data-en="My Projects" data-vi="Dự Án">My Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 1">
+                    <div class="project-header">
+                        <img src="hust.png" alt="HUST Logo" class="project-logo">
+                        <div>
+                            <h3 data-en="Movie Management System" data-vi="Hệ Thống Quản Lý Phim">Movie Management System</h3>
+                            <p class="project-date" data-en="Sep 2023 - Jan 2024" data-vi="Tháng 9 2023 - Tháng 1 2024">Sep 2023 - Jan 2024</p>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3 data-en="E-commerce Website" data-vi="Website Thương Mại Điện Tử">E-commerce Website</h3>
-                        <p data-en="A full-featured e-commerce platform built with React and Node.js" data-vi="Nền tảng thương mại điện tử đầy đủ tính năng được xây dựng bằng React và Node.js">A full-featured e-commerce platform built with React and Node.js</p>
+                        <p class="project-description" data-en="A full-featured movie management and recommendation system with user reviews and favorites" data-vi="Hệ thống quản lý và gợi ý phim với đánh giá và danh sách yêu thích">A full-featured movie management and recommendation system with user reviews and favorites</p>
+                        <div class="project-content">
+                            <div class="project-tasks">
+                                <h4 data-en="Key Features" data-vi="Tính Năng Chính">Key Features:</h4>
+                                <ul>
+                                    <li data-en="User authentication (login, logout, registration)" data-vi="Xác thực người dùng (đăng nhập, đăng xuất, đăng ký)">User authentication (login, logout, registration)</li>
+                                    <li data-en="Movie listing and detailed view" data-vi="Danh sách phim và xem chi tiết">Movie listing and detailed view</li>
+                                    <li data-en="Search functionality" data-vi="Tìm kiếm">Search functionality</li>
+                                    <li data-en="Review system with like/dislike" data-vi="Hệ thống đánh giá với like/dislike">Review system with like/dislike</li>
+                                    <li data-en="Movie management (CRUD operations)" data-vi="Quản lý phim (thêm, sửa, xóa)">Movie management (CRUD operations)</li>
+                                    <li data-en="Content and preference-based recommendations" data-vi="Gợi ý phim theo nội dung và sở thích">Content and preference-based recommendations</li>
+                                </ul>
+                            </div>
+                            <div class="project-tags">
+                                <span>Django</span>
+                                <span>MySQL</span>
+                                <span>Bootstrap</span>
+                                <span>REST API</span>
+                                <span>Recommender Systems</span>
+                            </div>
+                            <button class="show-more-btn" data-en="Show More" data-vi="Xem Thêm">Show More</button>
+                            <div class="project-links">
+                                <a href="https://github.com/QuanTH02/movie-management" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                    <span data-en="View Code" data-vi="Xem Mã">View Code</span>
+                                </a>
+                                <a href="#" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span data-en="Live Demo" data-vi="Xem Demo">Live Demo</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="hust.png" alt="HUST Logo" class="project-logo">
+                        <div>
+                            <h3 data-en="File Sharing Application" data-vi="Ứng Dụng Chia Sẻ File">File Sharing Application</h3>
+                            <p class="project-date" data-en="Aug 2023 - Dec 2023" data-vi="Tháng 8 2023 - Tháng 12 2023">Aug 2023 - Dec 2023</p>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-description" data-en="A team-based file sharing application with role-based permissions and real-time updates" data-vi="Ứng dụng chia sẻ file theo nhóm với phân quyền và cập nhật thời gian thực">A team-based file sharing application with role-based permissions and real-time updates</p>
+                        <div class="project-tasks">
+                            <h4 data-en="Key Features" data-vi="Tính Năng Chính">Key Features:</h4>
+                            <ul>
+                                <li data-en="Socket-based server-client connection" data-vi="Kết nối server-client qua socket">Socket-based server-client connection</li>
+                                <li data-en="User authentication" data-vi="Xác thực người dùng">User authentication</li>
+                                <li data-en="Team and member management" data-vi="Quản lý nhóm và thành viên">Team and member management</li>
+                                <li data-en="File operations (upload, download)" data-vi="Thao tác file (tải lên, tải xuống)">File operations (upload, download)</li>
+                                <li data-en="Folder management (CRUD, copy, move)" data-vi="Quản lý thư mục (thêm, sửa, xóa, sao chép, di chuyển)">Folder management (CRUD, copy, move)</li>
+                            </ul>
+                        </div>
                         <div class="project-tags">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MongoDB</span>
+                            <span>Python</span>
+                            <span>Socket</span>
+                            <span>SQLite</span>
                         </div>
                         <div class="project-links">
                             <a href="#" target="_blank"><i class="fab fa-github"></i></a>
@@ -137,21 +224,65 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/400x300" alt="Project 2">
+                    <div class="project-header">
+                        <img src="hust.png" alt="HUST Logo" class="project-logo">
+                        <div>
+                            <h3 data-en="Education Management System" data-vi="Hệ Thống Quản Lý Giáo Dục">Education Management System</h3>
+                            <p class="project-date" data-en="Sep 2022 - Jan 2023" data-vi="Tháng 9 2022 - Tháng 1 2023">Sep 2022 - Jan 2023</p>
+                        </div>
                     </div>
                     <div class="project-info">
-                        <h3 data-en="Task Management App" data-vi="Ứng Dụng Quản Lý Công Việc">Task Management App</h3>
-                        <p data-en="A collaborative task management application with real-time updates" data-vi="Ứng dụng quản lý công việc cộng tác với cập nhật thời gian thực">A collaborative task management application with real-time updates</p>
+                        <p class="project-description" data-en="A comprehensive education management system for handling academic information, course management, student and faculty administration" data-vi="Hệ thống quản lý giáo dục toàn diện để xử lý thông tin học tập, quản lý khóa học, quản lý sinh viên và giảng viên">A comprehensive education management system for handling academic information, course management, student and faculty administration</p>
+                        <div class="project-tasks">
+                            <h4 data-en="Key Features" data-vi="Tính Năng Chính">Key Features:</h4>
+                            <ul>
+                                <li data-en="User authentication and role-based access" data-vi="Xác thực người dùng và phân quyền truy cập">User authentication and role-based access</li>
+                                <li data-en="Course and class management" data-vi="Quản lý khóa học và lớp học">Course and class management</li>
+                                <li data-en="Student and faculty management" data-vi="Quản lý sinh viên và giảng viên">Student and faculty management</li>
+                            </ul>
+                        </div>
                         <div class="project-tags">
-                            <span>Vue.js</span>
-                            <span>Firebase</span>
-                            <span>Tailwind CSS</span>
+                            <span>Python</span>
+                            <span>MySQL</span>
                         </div>
                         <div class="project-links">
                             <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                             <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <img src="salesmart.svg" alt="THEINFITECH Logo" class="project-logo">
+                        <div>
+                            <h3 data-en="Sales Smart Platform" data-vi="Nền Tảng Sales Smart">Sales Smart Platform</h3>
+                            <p class="project-date" data-en="Oct 2024 - Present" data-vi="Tháng 10 2024 - Hiện tại">Oct 2024 - Present</p>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <p class="project-description" data-en="A recruitment platform for finding users and companies" data-vi="Nền tảng tìm kiếm người dùng và công ty khi tuyển dụng">A recruitment platform for finding users and companies</p>
+                        <div class="project-tasks">
+                            <h4 data-en="Key Features" data-vi="Tính Năng Chính">Key Features:</h4>
+                            <ul>
+                                <li data-en="Base component development" data-vi="Phát triển component cơ bản">Base component development</li>
+                                <li data-en="User authentication system" data-vi="Hệ thống xác thực người dùng">User authentication system</li>
+                                <li data-en="Advanced search functionality" data-vi="Tính năng tìm kiếm nâng cao">Advanced search functionality</li>
+                                <li data-en="CSV file upload and processing" data-vi="Tải lên và xử lý file CSV">CSV file upload and processing</li>
+                                <li data-en="Person and Companies API development" data-vi="Phát triển API Person và Companies">Person and Companies API development</li>
+                            </ul>
+                        </div>
+                        <div class="project-tags">
+                            <span>Next.js</span>
+                            <span>FastAPI</span>
+                            <span>ElasticSearch</span>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank"><i class="fas fa-lock"></i></a>
+                            <a href="https://app.salessmart.jp/" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </div>
@@ -168,17 +299,17 @@
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <h3 data-en="Email" data-vi="Email">Email</h3>
-                        <p>john.doe@example.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <h3 data-en="Phone" data-vi="Điện Thoại">Phone</h3>
-                        <p>+1 234 567 890</p>
+                        <p>anhquankaka113@gmail.com</p>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <h3 data-en="Location" data-vi="Địa Chỉ">Location</h3>
-                        <p data-en="New York, USA" data-vi="New York, Hoa Kỳ">New York, USA</p>
+                        <p data-en="Hanoi, Vietnam" data-vi="Hà Nội, Việt Nam">Hanoi, Vietnam</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3 data-en="Education" data-vi="Học Vấn">Education</h3>
+                        <p data-en="Hanoi University of Science and Technology" data-vi="Đại học Bách Khoa Hà Nội">Hanoi University of Science and Technology</p>
                     </div>
                 </div>
                 <form class="contact-form">
@@ -204,11 +335,11 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p data-en="© 2024 My Portfolio. All rights reserved." data-vi="© 2024 Portfolio của tôi. Đã đăng ký bản quyền.">© 2024 My Portfolio. All rights reserved.</p>
+                <p data-en="© 2024 Trần Hồng Quân. All rights reserved." data-vi="© 2024 Trần Hồng Quân. Đã đăng ký bản quyền.">© 2024 Trần Hồng Quân. All rights reserved.</p>
                 <div class="social-links">
-                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://github.com/QuanTH02" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/quanth02/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/quanth02/" target="_blank"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
         </div>

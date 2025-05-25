@@ -1,9 +1,8 @@
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
 const html = document.documentElement;
-const themeIcon = themeToggle.querySelector('i');
 
-// Check for saved theme preference
+// Load saved theme
 const savedTheme = localStorage.getItem('theme') || 'light';
 html.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
@@ -11,37 +10,48 @@ updateThemeIcon(savedTheme);
 themeToggle.addEventListener('click', () => {
     const currentTheme = html.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
     html.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
 });
 
 function updateThemeIcon(theme) {
-    themeIcon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
 }
 
 // Language Toggle
 const langToggle = document.getElementById('langToggle');
 let currentLang = localStorage.getItem('language') || 'en';
 
-// Update language button text
-langToggle.textContent = currentLang.toUpperCase();
+// Load saved language
+updateLanguage(currentLang);
 
 langToggle.addEventListener('click', () => {
     currentLang = currentLang === 'en' ? 'vi' : 'en';
-    localStorage.setItem('language', currentLang);
-    langToggle.textContent = currentLang.toUpperCase();
     updateLanguage(currentLang);
+    localStorage.setItem('language', currentLang);
 });
 
 function updateLanguage(lang) {
+    langToggle.textContent = lang.toUpperCase();
+    
+    // Update all elements with data attributes
     document.querySelectorAll('[data-en]').forEach(element => {
         if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
             element.placeholder = element.getAttribute(`data-${lang}`);
         } else {
             element.textContent = element.getAttribute(`data-${lang}`);
         }
+    });
+
+    // Update show more buttons
+    document.querySelectorAll('.show-more-btn').forEach(button => {
+        const projectContent = button.closest('.project-content');
+        const isExpanded = projectContent.classList.contains('expanded');
+        button.textContent = isExpanded ? 
+            (lang === 'en' ? 'Show Less' : 'Thu Gọn') : 
+            (lang === 'en' ? 'Show More' : 'Xem Thêm');
     });
 }
 
@@ -60,39 +70,33 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Smooth scroll for navigation links
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
             target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+                behavior: 'smooth'
             });
-            // Close mobile menu after clicking a link
             navLinks.classList.remove('active');
         }
     });
 });
 
-// Form submission handling
+// Form Submission
 const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would typically handle the form submission
-        // For now, we'll just show an alert
-        const message = currentLang === 'en' 
-            ? 'Thank you for your message! I will get back to you soon.'
-            : 'Cảm ơn tin nhắn của bạn! Tôi sẽ liên hệ lại sớm.';
-        alert(message);
-        contactForm.reset();
-    });
-}
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const message = currentLang === 'en' 
+        ? 'Thank you for your message! I will get back to you soon.'
+        : 'Cảm ơn tin nhắn của bạn! Tôi sẽ liên hệ lại sớm.';
+    alert(message);
+    contactForm.reset();
+});
 
-// Add scroll reveal animation
-const revealElements = document.querySelectorAll('.skill-card, .project-card, .about-content, .contact-content');
+// Scroll Reveal Animation
+const revealElements = document.querySelectorAll('.section-title, .about-content, .skills-grid, .projects-grid, .contact-content');
 
 const revealOnScroll = () => {
     revealElements.forEach(element => {
@@ -106,30 +110,28 @@ const revealOnScroll = () => {
     });
 };
 
-// Set initial state for reveal elements
+// Set initial styles
 revealElements.forEach(element => {
     element.style.opacity = '0';
     element.style.transform = 'translateY(20px)';
-    element.style.transition = 'all 0.6s ease-out';
+    element.style.transition = 'all 0.6s ease';
 });
 
-// Add scroll event listener
 window.addEventListener('scroll', revealOnScroll);
-// Initial check for elements in view
-revealOnScroll();
+window.addEventListener('load', revealOnScroll);
 
-// Add active state to navigation links based on scroll position
+// Active Navigation Links
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-links a');
 
-const updateActiveNavItem = () => {
+window.addEventListener('scroll', () => {
     let current = '';
     
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
         
-        if (window.scrollY >= sectionTop - 200) {
+        if (pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
     });
@@ -140,8 +142,17 @@ const updateActiveNavItem = () => {
             item.classList.add('active');
         }
     });
-};
+});
 
-window.addEventListener('scroll', updateActiveNavItem);
-// Initial check for active section
-updateActiveNavItem(); 
+// Show More Button
+document.querySelectorAll('.show-more-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const projectContent = button.closest('.project-content');
+        const isExpanded = projectContent.classList.contains('expanded');
+        
+        projectContent.classList.toggle('expanded');
+        button.textContent = isExpanded ? 
+            (currentLang === 'en' ? 'Show More' : 'Xem Thêm') : 
+            (currentLang === 'en' ? 'Show Less' : 'Thu Gọn');
+    });
+}); 

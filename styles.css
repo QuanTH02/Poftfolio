@@ -157,24 +157,55 @@ body {
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--gradient-1);
-    opacity: 0.1;
-    z-index: 0;
+.hero-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+    margin-bottom: 2rem;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+.hero-text {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    flex-shrink: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero h1 {
@@ -236,18 +267,27 @@ body {
 
 .social-links {
     display: flex;
-    gap: 1.5rem;
-    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
 }
 
-.social-links a {
+.social-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background: var(--card-bg);
     color: var(--text-color);
-    font-size: 1.5rem;
+    text-decoration: none;
     transition: var(--transition);
+    border: 1px solid rgba(16, 185, 129, 0.1);
 }
 
-.social-links a:hover {
-    color: var(--primary-color);
+.social-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* Section Styles */
@@ -376,38 +416,103 @@ section {
     transition: var(--transition);
     position: relative;
     z-index: 1;
-    border: 1px solid rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2);
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(16, 185, 129, 0.1);
 }
 
-.project-image img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+.project-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .project-info {
     padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.project-info h3 {
-    margin-bottom: 0.5rem;
+.project-content {
+    position: relative;
+    max-height: 400px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
 }
 
-.project-info p {
+.project-content.expanded {
+    max-height: none;
+}
+
+.project-description {
     color: var(--light-text);
     margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-tasks {
+    margin: 1.5rem 0;
+}
+
+.project-tasks ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.project-tasks li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--light-text);
+    font-size: 0.95rem;
+}
+
+.project-tasks li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+.show-more-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin: 1rem 0;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.show-more-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
 }
 
 .project-tags {
     display: flex;
-    gap: 0.5rem;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    gap: 0.5rem;
+    margin: 1rem 0;
 }
 
 .project-tags span {
@@ -415,20 +520,33 @@ section {
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
+    color: var(--primary-color);
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .project-links {
     display: flex;
     gap: 1rem;
+    margin-top: 1rem;
 }
 
-.project-links a {
+.project-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background: var(--card-bg);
     color: var(--text-color);
+    text-decoration: none;
     transition: var(--transition);
+    border: 1px solid rgba(16, 185, 129, 0.1);
 }
 
-.project-links a:hover {
-    color: var(--primary-color);
+.project-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
 }
 
 /* Contact Section */
@@ -536,6 +654,19 @@ section {
     color: white;
 }
 
+/* Project Styles Update */
+.project-date {
+    color: var(--light-text);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.project-tasks h4 {
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-toggle {
@@ -559,12 +690,38 @@ section {
         display: flex;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
+    .hero-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
     }
 
-    .hero h2 {
-        font-size: 1.5rem;
+    .hero-text {
+        text-align: center;
+    }
+
+    .hero-stats {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .avatar {
+        width: 150px;
+        height: 150px;
+    }
+
+    .project-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .project-logo {
+        width: 30px;
+        height: 30px;
     }
 
     .about-content,
@@ -594,5 +751,27 @@ section {
 
     .section-title {
         font-size: 2rem;
+    }
+
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .hero-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .social-links {
+        flex-direction: column;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .project-tasks li {
+        font-size: 0.9rem;
     }
 } 

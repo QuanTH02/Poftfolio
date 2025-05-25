@@ -20,7 +20,7 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav-container">
-            <div class="logo">Portfolio</div>
+            <div class="logo">QuanTH02</div>
             <div class="nav-toggle" id="mobile-nav-toggle">
                 <span></span>
                 <span></span>
@@ -40,27 +40,40 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-header">
-                <div class="avatar">
-                    <img src="avt.jpg" alt="Trần Hồng Quân">
-                </div>
-                <div class="hero-text">
-                    <h1 data-en="Hi, I'm" data-vi="Xin chào, tôi là">Hi, I'm <span class="highlight" data-en="Trần Hồng Quân" data-vi="Trần Hồng Quân">Trần Hồng Quân</span></h1>
-                    <h2 data-en="Full Stack Developer at THEINFITECH" data-vi="Lập Trình Viên Full Stack tại THEINFITECH">Full Stack Developer at THEINFITECH</h2>
-                    <p data-en="I create efficient and scalable web applications with modern technologies" data-vi="Tôi xây dựng các ứng dụng web hiệu quả và có khả năng mở rộng với công nghệ hiện đại">I create efficient and scalable web applications with modern technologies</p>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">1+</span>
-                            <span class="stat-label" data-en="Years Experience" data-vi="Năm Kinh Nghiệm">Years Experience</span>
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <img src="avt.jpg" alt="Trần Hồng Quân">
+                    </div>
+                    <div class="avatar-info">
+                        <!-- <div class="personal-info">
+                            <div class="info-item">
+                                <i class="fas fa-user"></i>
+                                <span data-en="Male" data-vi="Nam">Male</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-phone"></i>
+                                <span>0876336130</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span data-en="Thanh Xuan, Hanoi" data-vi="Thanh Xuân, Hà Nội">Thanh Xuan, Hanoi</span>
+                            </div>
+                        </div> -->
+                        <div class="birth-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>07/08/2002</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label" data-en="Projects" data-vi="Dự Án">Projects</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label" data-en="Technologies" data-vi="Công Nghệ">Technologies</span>
+                        <div class="certificate">
+                            <i class="fas fa-certificate"></i>
+                            <span data-en="JLPT N4" data-vi="JLPT N4">JLPT N4</span>
                         </div>
                     </div>
+                </div>
+                <div class="hero-text">
+                    <h1 data-en="Hi, I'm" data-vi="Xin chào, tôi là">Hi, I'm <span class="highlight">Trần Hồng Quân</span></h1>
+                    <h2 data-en="Full Stack Developer" data-vi="Lập Trình Viên Full Stack">Full Stack Developer</h2>
+                    <p data-en="Full-stack developer specializing in AI integration and code generation. I build efficient applications while leveraging AI to optimize development workflows and enhance team collaboration." data-vi="Lập trình viên full-stack chuyên về tích hợp AI và code generation. Tôi xây dựng các ứng dụng hiệu quả, tận dụng AI để tối ưu quy trình phát triển và nâng cao hiệu quả làm việc nhóm.">Full-stack developer specializing in AI integration and code generation. I build efficient applications while leveraging AI to optimize development workflows and enhance team collaboration.</p>
+                    
                     <div class="social-links">
                         <a href="https://github.com/QuanTH02" target="_blank" class="social-link">
                             <i class="fab fa-github"></i>
@@ -75,13 +88,15 @@
                             <span>Facebook</span>
                         </a>
                     </div>
+
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn primary-btn" data-en="Contact Me" data-vi="Liên Hệ">Contact Me</a>
+                        <a href="#projects" class="btn secondary-btn" data-en="View Projects" data-vi="Xem Dự Án">View Projects</a>
+                    </div>
                 </div>
             </div>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn primary-btn" data-en="Contact Me" data-vi="Liên Hệ">Contact Me</a>
-                <a href="#projects" class="btn secondary-btn" data-en="View Projects" data-vi="Xem Dự Án">View Projects</a>
-            </div>
         </div>
+        <div class="snow-container"></div>
     </section>
 
     <!-- About Section -->
@@ -93,18 +108,18 @@
                     <p data-en="I am a Full Stack Developer at THEINFITECH, currently studying at Hanoi University of Science and Technology. I specialize in building web applications using Next.js, FastAPI, and MySQL." data-vi="Tôi là Lập Trình Viên Full Stack tại THEINFITECH, hiện đang học tại Đại học Bách Khoa Hà Nội. Tôi chuyên về xây dựng ứng dụng web sử dụng Next.js, FastAPI và MySQL.">I am a Full Stack Developer at THEINFITECH, currently studying at Hanoi University of Science and Technology. I specialize in building web applications using Next.js, FastAPI, and MySQL.</p>
                     <p data-en="With experience in both frontend and backend development, I create efficient and scalable solutions that solve real-world problems." data-vi="Với kinh nghiệm trong cả phát triển frontend và backend, tôi tạo ra các giải pháp hiệu quả và có khả năng mở rộng để giải quyết các vấn đề thực tế.">With experience in both frontend and backend development, I create efficient and scalable solutions that solve real-world problems.</p>
                 </div>
-                <div class="about-stats">
+                <div class="hero-stats">
                     <div class="stat-item">
-                        <h3>1+</h3>
-                        <p data-en="Years Experience" data-vi="Năm Kinh Nghiệm">Years Experience</p>
+                        <span class="stat-number">1+</span>
+                        <span class="stat-label" data-en="Years Experience" data-vi="Năm Kinh Nghiệm">Years Experience</span>
                     </div>
                     <div class="stat-item">
-                        <h3>10+</h3>
-                        <p data-en="Projects Completed" data-vi="Dự Án Hoàn Thành">Projects Completed</p>
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label" data-en="Projects" data-vi="Dự Án">Projects</span>
                     </div>
                     <div class="stat-item">
-                        <h3>5+</h3>
-                        <p data-en="Technologies" data-vi="Công Nghệ">Technologies</p>
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label" data-en="Technologies" data-vi="Công Nghệ">Technologies</span>
                     </div>
                 </div>
             </div>
@@ -116,6 +131,14 @@
         <div class="container">
             <h2 class="section-title" data-en="My Skills" data-vi="Kỹ Năng">My Skills</h2>
             <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5/CSS3</h3>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                </div>
                 <div class="skill-card">
                     <i class="fab fa-react"></i>
                     <h3>Next.js</h3>
@@ -131,14 +154,6 @@
                 <div class="skill-card">
                     <i class="fab fa-microsoft"></i>
                     <h3>Azure</h3>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h3>HTML5/CSS3</h3>
                 </div>
             </div>
         </div>

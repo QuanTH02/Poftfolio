@@ -37,7 +37,14 @@ function updateLanguage() {
         const text = currentLanguage === 'en' ? 
             element.getAttribute('data-en') : 
             element.getAttribute('data-vi');
-        if (text) element.textContent = text;
+        if (text) {
+            // Preserve the name in the highlight span
+            if (element.classList.contains('highlight')) {
+                element.textContent = 'Trần Hồng Quân';
+            } else {
+                element.textContent = text;
+            }
+        }
     });
 }
 
@@ -144,4 +151,57 @@ const originalUpdateLanguage = updateLanguage;
 updateLanguage = function() {
     originalUpdateLanguage();
     initializeShowMoreButtons();
-}; 
+};
+
+// Snow Effect
+function createSnowflake() {
+    const snowflake = document.createElement('div');
+    snowflake.classList.add('snowflake');
+    
+    // Random size between 2px and 4px for natural look
+    const size = Math.random() * 2 + 2;
+    snowflake.style.width = `${size}px`;
+    snowflake.style.height = `${size}px`;
+    
+    // Random position across the screen
+    snowflake.style.left = `${Math.random() * 100}%`;
+    
+    // Random animation duration between 8s and 12s for slower, more natural movement
+    const duration = Math.random() * 4 + 8;
+    snowflake.style.animationDuration = `${duration}s`;
+    
+    // Random delay for natural distribution
+    const delay = Math.random() * 5;
+    snowflake.style.animationDelay = `${delay}s`;
+    
+    return snowflake;
+}
+
+function initSnowEffect() {
+    const snowContainer = document.querySelector('.snow-container');
+    const snowflakeCount = 15; // Reduced number for subtle effect
+    
+    // Create initial snowflakes
+    for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = createSnowflake();
+        snowContainer.appendChild(snowflake);
+    }
+    
+    // Add new snowflakes occasionally
+    setInterval(() => {
+        if (Math.random() < 0.3) { // 30% chance to add new snowflake
+            const snowflake = createSnowflake();
+            snowContainer.appendChild(snowflake);
+            
+            // Remove snowflake after animation completes
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+    }, 1000); // Check every second
+}
+
+// Initialize snow effect when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initSnowEffect();
+}); 

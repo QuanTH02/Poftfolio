@@ -131,6 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize snow effect
     console.log('Initializing snow effect');
     initSnowEffect();
+
+    // Check for truncated content
+    checkTruncation();
 });
 
 // Snow Effect
@@ -203,4 +206,27 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
+});
+
+// Check for truncated content
+function checkTruncation() {
+    const elements = document.querySelectorAll('[data-tooltip]');
+    elements.forEach(element => {
+        if (element.offsetWidth < element.scrollWidth) {
+            element.classList.add('truncated');
+        } else {
+            element.classList.remove('truncated');
+        }
+    });
+}
+
+// Check on load and resize
+window.addEventListener('load', checkTruncation);
+window.addEventListener('resize', checkTruncation);
+
+// Check when show more is clicked
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('show-more-btn')) {
+        setTimeout(checkTruncation, 100); // Check after animation
+    }
 }); 

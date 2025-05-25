@@ -830,12 +830,60 @@ section {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
 }
 
 .contact-item i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+
+.contact-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    /* margin-top: 0.25rem; */
+    position: relative;
+    z-index: 2;
+    font-size: 0.95rem;
+}
+
+.education-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    position: relative;
+    z-index: 2;
+}
+
+.university-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .education-info {
+        gap: 0.25rem;
+    }
+
+    .university-logo {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .contact-form {
@@ -843,6 +891,12 @@ section {
     z-index: 1;
     display: grid;
     gap: 1.5rem;
+}
+
+.contact-form button[type="submit"] {
+    justify-self: end;
+    min-width: 150px;
+    cursor: pointer;
 }
 
 .form-group input,
@@ -1066,6 +1120,19 @@ section {
     .birth-date, .certificate {
         margin: 0 auto;
     }
+
+    .contact-form {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .contact-form button[type="submit"] {
+        justify-self: end;
+        min-width: 150px;
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1224,5 +1291,51 @@ section {
     }
     100% {
         transform: translateY(100vh) translateX(-20px) rotate(360deg);
+    }
+}
+
+.contact-link {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    display: inline-block;
+    /* margin-top: 0.5rem; */
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.education-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.university-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.university-logo:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .education-info {
+        gap: 0.5rem;
+    }
+
+    .university-logo {
+        width: 50px;
+        height: 50px;
     }
 } 
